@@ -54,7 +54,7 @@ export default async function page() {
 
         return years.map((year) => (
           <div key={year}>
-            <h3 className="mt-4 font-medium">{year}</h3>
+            <h2 className="mt-8">{year}</h2>
             <ul>
               {concertsByYear[year].map((concert) => (
                 <ConcertCard

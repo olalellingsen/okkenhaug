@@ -9,5 +9,5 @@ const InstagramEmbed = dynamic(
 );
 
 export default function InstagramComponent() {
-  return <InstagramEmbed url="https://www.instagram.com/olalellingsen/" />;
+  return <InstagramEmbed url="https://www.instagram.com/eskildso/" />;
 }

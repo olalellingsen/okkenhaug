@@ -90,7 +90,7 @@ export default async function Footer() {
         <Link href="/studio/" target="_blank">
           Studio
         </Link>
-        <p className=" ">© {new Date().getFullYear()} Ola Lømo Ellingsen</p>
+        <p className=" ">© {new Date().getFullYear()} Eskild Okkenhaug</p>
       </div>
     </footer>
   );

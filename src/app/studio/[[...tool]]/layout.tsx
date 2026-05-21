@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import StyledComponentsRegistry from "@/lib/registry";
 
 export const metadata: Metadata = {
-  title: "Studio - Ola Lømo Ellingsen",
+  title: "Studio - Eskild Okkenhaug",
 };
 
 export default function RootLayout({

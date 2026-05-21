@@ -15,7 +15,7 @@ interface ButtonProps {
 }
 
 const buttonVariants = {
-  default: "bg-foreground text-background hover:bg-gray-300",
+  default: "bg-foreground text-background hover:bg-gray-600",
   outline: "border border-gray-300 bg-transparent hover:bg-gray-900",
   link: "hover:underline bg-transparent p-0 h-auto",
 };

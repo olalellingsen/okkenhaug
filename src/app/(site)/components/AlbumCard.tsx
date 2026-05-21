@@ -20,7 +20,7 @@ export default function AlbumCard({ album }: { album: Album }) {
             alt={album.title}
             width={400}
             height={400}
-            className="w-full group-hover:opacity-70 transition-opacity duration-300 rounded-2xl"
+            className="w-full group-hover:opacity-70 transition-opacity duration-300"
           />
         </Link>
       )}

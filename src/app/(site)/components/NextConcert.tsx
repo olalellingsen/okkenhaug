@@ -4,17 +4,9 @@ import { client } from "@/sanity/client";
 import { NEXT_CONCERT_QUERY } from "@/app/queries";
 import Button from "./Button";
 
-const today = new Date().toISOString().split("T")[0];
-
-export default async function NextConcerts() {
-  const concert = await client.fetch<Concert>(NEXT_CONCERT_QUERY, {
-    today,
-  });
-  if (!concert) {
-    return null;
-  }
+export default async function NextConcert({ concert }: { concert: Concert }) {
   return (
-    <div className="p-4 relative rounded-2xl bg-sky-950">
+    <div className="p-4 relative border rounded-md">
       <div className="font-medium">
         {new Date(concert.date).toLocaleDateString("en-GB", {
           weekday: "short",
@@ -23,7 +15,7 @@ export default async function NextConcerts() {
         })}
       </div>
 
-      <div className="text-gray-400">
+      <div className="text-gray-500">
         {concert.time ? `${concert.time}` : ""}
       </div>
 

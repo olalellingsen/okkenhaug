@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
-import { Roboto_Condensed } from "next/font/google";
+import { Roboto_Slab } from "next/font/google";
 import "../globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const robotoCondensed = Roboto_Condensed({
-  variable: "--font-roboto-condensed",
-  subsets: ["latin"],
-});
-
-const robotoMono = Roboto_Condensed({
-  variable: "--font-roboto-mono",
+const robotoSlab = Roboto_Slab({
+  variable: "--font-roboto-slab",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Ola Lømo Ellingsen",
+  title: "Eskild Okkenhaug",
 };
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -28,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${robotoCondensed.variable} ${robotoMono.variable} font-light antialiased flex flex-col min-h-screen`}
+        className={`${robotoSlab.className} font-light antialiased flex flex-col min-h-screen`}
       >
         <Navbar />
         <main className="flex-grow py-10">{children}</main>

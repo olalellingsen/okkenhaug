@@ -1,16 +1,22 @@
-import { HOME_QUERY } from "../queries";
+import { HOME_QUERY, NEXT_CONCERT_QUERY } from "../queries";
 import { client, urlForImage } from "../../sanity/client";
 import Image from "next/image";
-import { HomePage } from "../types";
+import { Concert, HomePage } from "../types";
 import PortableTextSection from "./components/PortableTextSection";
 import InstagramComponent from "./components/InstagramComponent";
 import Button from "./components/Button";
 import NewsList from "./components/NewsList";
-import NextConcerts from "./components/NextConcerts";
+import NextConcerts from "./components/NextConcert";
 import Link from "next/link";
+import NextConcert from "./components/NextConcert";
+
+const today = new Date().toISOString().split("T")[0];
 
 export default async function IndexPage() {
   const home = await client.fetch<HomePage>(HOME_QUERY);
+  const next_concert = await client.fetch<Concert>(NEXT_CONCERT_QUERY, {
+    today,
+  });
 
   return (
     <article className="flex flex-col items-center space-y-8 p-2">
@@ -24,13 +30,15 @@ export default async function IndexPage() {
         />
       )}
 
-      <section className="max-w-3xl w-full">
-        <h2>Upcoming concerts</h2>
-        <NextConcerts />
-        <Button href="/concerts" variant="link" className="mt-2">
-          See all concerts
-        </Button>
-      </section>
+      {next_concert && (
+        <section className="max-w-3xl w-full">
+          <h2>Upcoming concerts</h2>
+          <NextConcert concert={next_concert} />
+          <Button href="/concerts" variant="link" className="mt-2">
+            See all concerts
+          </Button>
+        </section>
+      )}
 
       <section className="max-w-3xl w-full">
         <PortableTextSection
@@ -38,12 +46,12 @@ export default async function IndexPage() {
         />
       </section>
 
-      <section className="bg-sky-950 p-6 -mx-2">
+      {/* <section className="bg-sky-100 p-6 -mx-2">
         <h2>
           <Link href="/news">News</Link>
         </h2>
         <NewsList maxItems={3} />
-      </section>
+      </section> */}
 
       <section className="w-full max-w-3xl">
         <InstagramComponent />
@@ -53,7 +61,7 @@ export default async function IndexPage() {
         <iframe
           className="w-full h-[480px]"
           data-testid="embed-iframe"
-          src="https://open.spotify.com/embed/artist/4NZ0fCPxiuIaEHw9kUgURe?utm_source=generator&theme=0"
+          src={home.spotifyLink}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         />

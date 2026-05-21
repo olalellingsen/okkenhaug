@@ -51,6 +51,7 @@ export type Album = {
 export type HomePage = {
   _id: string;
   title: string;
+  spotifyLink: string;
   richText: Array<{
     _type: string;
     children: Array<{

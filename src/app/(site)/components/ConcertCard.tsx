@@ -24,7 +24,7 @@ export const ConcertCard = ({ concert, upcoming }: ConcertCardProps) => {
         })}
       </div>
 
-      <div className="text-gray-400">
+      <div className="text-gray-600">
         {concert.time ? `${concert.time}` : ""}
       </div>
 

@@ -97,6 +97,7 @@ export const HOME_QUERY = groq`*[_type == "home"][0]{
   _id,
   title,
   richText,
+  spotifyLink,
   image,
   socialLinks {
     platform,

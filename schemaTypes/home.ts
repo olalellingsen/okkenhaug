@@ -36,6 +36,13 @@ export const home = defineType({
       ],
     }),
     defineField({
+      name: "spotifyLink",
+      title: "Spotify Link",
+      type: "url",
+      description:
+        "Link to Spotify profile (make sure it contains embed before artist in the URL: /embed/artist/)",
+    }),
+    defineField({
       name: "socialLinks",
       title: "Social Links",
       type: "array",

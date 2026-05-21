@@ -34,8 +34,8 @@ function Navbar() {
   return (
     <header className="h-16 sm:h-20 p-2 sm:px-4 flex justify-between w-full">
       <Link href={"/"} className="hover:cursor-pointer">
-        <h2>Ola Lømo Ellingsen</h2>
-        <p className="text-sm -translate-y-3">Trumpet player | Composer</p>
+        <h2>Eskild Okkenhaug</h2>
+        <p className="text-sm -translate-y-3">Bassist & Composer</p>
       </Link>
       <nav>
         <ul

@@ -56,7 +56,7 @@ export default async function page({
         />
       )}
 
-      <article className="space-y-12 py-2">
+      <article className="space-y-12 py-4">
         <h1>{project.title}</h1>
 
         {project.body && (
@@ -117,7 +117,7 @@ export default async function page({
         )}
 
         {project.spotifyLink && (
-          <Button href={project.spotifyLink || "#"}>Listen on Spotify</Button>
+          <Button href={project.spotifyLink || "#"}>Listen here!</Button>
         )}
       </article>
     </main>
