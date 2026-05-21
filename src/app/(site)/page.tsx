@@ -5,9 +5,6 @@ import { Concert, HomePage } from "../types";
 import PortableTextSection from "./components/PortableTextSection";
 import InstagramComponent from "./components/InstagramComponent";
 import Button from "./components/Button";
-import NewsList from "./components/NewsList";
-import NextConcerts from "./components/NextConcert";
-import Link from "next/link";
 import NextConcert from "./components/NextConcert";
 
 const today = new Date().toISOString().split("T")[0];

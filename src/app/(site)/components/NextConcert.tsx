@@ -1,7 +1,5 @@
 import React from "react";
 import { Concert } from "@/app/types";
-import { client } from "@/sanity/client";
-import { NEXT_CONCERT_QUERY } from "@/app/queries";
 import Button from "./Button";
 
 export default async function NextConcert({ concert }: { concert: Concert }) {
