@@ -1,16 +1,16 @@
 import React from "react";
-import { client, urlForImage } from "@/sanity/client";
+import { client } from "@/sanity/client";
 import {
   PROJECT_ALBUMS_QUERY,
   PROJECT_QUERY,
   PROJECT_UPCOMING_CONCERTS_QUERY,
 } from "@/app/queries";
-import Image from "next/image";
 import { Album, Concert, Project } from "../../../types";
 import Button from "../../components/Button";
 import { ConcertCard } from "../../components/ConcertCard";
 import Link from "next/link";
 import PortableTextSection from "../../components/PortableTextSection";
+import SanityImage from "../../components/SanityImage";
 
 export async function generateStaticParams() {
   const projects = await client.fetch<{ slug: string }[]>(
@@ -47,11 +47,12 @@ export default async function page({
         &larr; Back to projects
       </Button>
       {project.image && (
-        <Image
-          src={urlForImage(project.image).url()}
+        <SanityImage
+          image={project.image}
           alt={project.title}
-          width={1200}
-          height={600}
+          width={1600}
+          height={640}
+          sizes="(max-width: 768px) 100vw, 1200px"
           className="w-full aspect-square md:aspect-5/2 object-cover"
         />
       )}
@@ -93,11 +94,12 @@ export default async function page({
                     rel="noopener noreferrer"
                   >
                     {album.coverArt && (
-                      <Image
-                        src={urlForImage(album.coverArt).url()}
+                      <SanityImage
+                        image={album.coverArt}
                         alt={album.title}
                         width={400}
                         height={400}
+                        sizes="(max-width: 768px) 50vw, 25vw"
                         className="group-hover:opacity-80 transition"
                       />
                     )}
@@ -117,7 +119,9 @@ export default async function page({
         )}
 
         {project.spotifyLink && (
-          <Button href={project.spotifyLink || "#"}>Listen here!</Button>
+          <Button href={project.spotifyLink || "#"} external>
+            Listen here!
+          </Button>
         )}
       </article>
     </main>

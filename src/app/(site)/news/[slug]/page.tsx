@@ -1,8 +1,8 @@
-import { client, urlForImage } from "@/sanity/client";
-import Image from "next/image";
+import { client } from "@/sanity/client";
 import React from "react";
 import PortableTextSection from "../../components/PortableTextSection";
 import Button from "../../components/Button";
+import SanityImage from "../../components/SanityImage";
 
 export async function generateStaticParams() {
   const projects = await client.fetch<{ slug: string }[]>(
@@ -34,11 +34,12 @@ export default async function newsItem({
         &larr; Back to news
       </Button>
       {newsItem.image && (
-        <Image
-          src={urlForImage(newsItem.image).url()}
+        <SanityImage
+          image={newsItem.image}
           alt={newsItem.title}
-          width={600}
-          height={400}
+          width={1200}
+          height={800}
+          sizes="(max-width: 768px) 100vw, 800px"
           className="group-hover:opacity-70 transition-opacity duration-300"
         />
       )}

@@ -1,9 +1,8 @@
-import Image from "next/image";
-import { urlForImage } from "@/sanity/client";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { RichTextBlock } from "../../types";
 import Button from "./Button";
 import { ExternalLink } from "lucide-react";
+import SanityImage from "./SanityImage";
 
 // Type for image values in portable text
 type ImageValue = {
@@ -25,11 +24,12 @@ const stylings: PortableTextComponents = {
   types: {
     image: ({ value }: { value: ImageValue }) => (
       <figure className="my-6">
-        <Image
-          src={urlForImage(value).url()}
+        <SanityImage
+          image={value}
           alt={value.alt || ""}
-          width={800}
-          height={600}
+          width={1200}
+          height={675}
+          sizes="(max-width: 768px) 100vw, 800px"
           className="aspect-square sm:aspect-video object-cover w-full"
         />
         {value.caption && <figcaption>{value.caption}</figcaption>}

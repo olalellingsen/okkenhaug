@@ -1,10 +1,9 @@
 import { Album } from "@/app/types";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Button from "./Button";
-import { urlForImage } from "@/sanity/client";
 import SliderItem from "./SliderItem";
+import SanityImage from "./SanityImage";
 
 export default function AlbumCard({ album }: { album: Album }) {
   return (
@@ -15,11 +14,12 @@ export default function AlbumCard({ album }: { album: Album }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            src={urlForImage(album.coverArt).url()}
+          <SanityImage
+            image={album.coverArt}
             alt={album.title}
-            width={400}
-            height={400}
+            width={500}
+            height={500}
+            sizes="(max-width: 768px) 50vw, 25vw"
             className="w-full group-hover:opacity-70 transition-opacity duration-300"
           />
         </Link>
@@ -46,7 +46,7 @@ export default function AlbumCard({ album }: { album: Album }) {
 
         {album.streamingLink && (
           <Button href={album.streamingLink} external className="my-2">
-            Listen Here
+            Listen here!
           </Button>
         )}
       </div>

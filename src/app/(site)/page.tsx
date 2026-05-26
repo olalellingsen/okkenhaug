@@ -1,11 +1,11 @@
 import { HOME_QUERY, NEXT_CONCERT_QUERY } from "../queries";
-import { client, urlForImage } from "../../sanity/client";
-import Image from "next/image";
+import { client } from "../../sanity/client";
 import { Concert, HomePage } from "../types";
 import PortableTextSection from "./components/PortableTextSection";
 import InstagramComponent from "./components/InstagramComponent";
 import Button from "./components/Button";
 import NextConcert from "./components/NextConcert";
+import SanityImage from "./components/SanityImage";
 
 const today = new Date().toISOString().split("T")[0];
 
@@ -18,11 +18,11 @@ export default async function IndexPage() {
   return (
     <article className="flex flex-col items-center space-y-8 p-2">
       {home.image && (
-        <Image
-          src={urlForImage(home?.image).url()}
+        <SanityImage
+          image={home.image}
           alt="Home Image"
-          width={600}
-          height={400}
+          sizes="(max-width: 768px) 100vw, 768px"
+          priority
           className="w-full max-w-3xl"
         />
       )}
