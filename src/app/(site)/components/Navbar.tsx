@@ -11,6 +11,7 @@ function Navbar() {
   const [menuItems] = useState([
     { label: "Home", path: "/" },
     { label: "Projects", path: "/projects" },
+    { label: "Gallery", path: "/gallery" },
     { label: "Music", path: "/music" },
     { label: "Concerts", path: "/concerts" },
   ]);
@@ -39,7 +40,7 @@ function Navbar() {
       </Link>
       <nav>
         <ul
-          className={`hidden md:flex w-max gap-10 m-4 text-lg hover:text-gray-400
+          className={`hidden md:flex w-max gap-8 m-4 text-lg hover:text-gray-400
           } `}
         >
           {menuItems.map((item) => (

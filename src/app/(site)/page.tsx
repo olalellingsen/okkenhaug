@@ -6,6 +6,7 @@ import InstagramComponent from "./components/InstagramComponent";
 import Button from "./components/Button";
 import NextConcert from "./components/NextConcert";
 import SanityImage from "./components/SanityImage";
+import NewsList from "./components/NewsList";
 
 const today = new Date().toISOString().split("T")[0];
 
@@ -43,12 +44,9 @@ export default async function IndexPage() {
         />
       </section>
 
-      {/* <section className="bg-sky-100 p-6 -mx-2">
-        <h2>
-          <Link href="/news">News</Link>
-        </h2>
+      <section className="max-w-3xl w-full">
         <NewsList maxItems={3} />
-      </section> */}
+      </section>
 
       <section className="w-full max-w-3xl">
         <InstagramComponent />

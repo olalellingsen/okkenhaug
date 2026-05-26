@@ -29,7 +29,7 @@ export default async function newsItem({
   }
 
   return (
-    <div className="content">
+    <div className="content space-y-2">
       <Button href="/news" variant="link">
         &larr; Back to news
       </Button>
@@ -40,7 +40,7 @@ export default async function newsItem({
           width={1200}
           height={800}
           sizes="(max-width: 768px) 100vw, 800px"
-          className="group-hover:opacity-70 transition-opacity duration-300"
+          className="group-hover:opacity-70 transition-opacity duration-300 aspect-square sm:aspect-[8/3] object-cover"
         />
       )}
       <h1>{newsItem.title}</h1>

@@ -105,6 +105,21 @@ export const HOME_QUERY = groq`*[_type == "home"][0]{
   }
 }`;
 
+export const GALLERY_QUERY = groq`*[_type == "gallery"][0]{
+  images[]{
+    _key,
+    photographer,
+    alt,
+    image{
+      ...,
+      asset->{
+        _id,
+        metadata { dimensions }
+      }
+    }
+  }
+}`;
+
 export const ALBUMS_QUERY = groq`*[_type == "albums"] | order(releaseDate desc) {
   _id,
   title,

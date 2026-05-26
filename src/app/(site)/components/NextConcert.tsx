@@ -4,7 +4,7 @@ import Button from "./Button";
 
 export default async function NextConcert({ concert }: { concert: Concert }) {
   return (
-    <div className="p-4 relative border rounded-md">
+    <div className="p-4 relative border rounded-lg">
       <div className="font-medium">
         {new Date(concert.date).toLocaleDateString("en-GB", {
           weekday: "short",

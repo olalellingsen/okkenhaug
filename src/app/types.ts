@@ -81,6 +81,28 @@ export type Footer = {
   }>;
 };
 
+export type GalleryImage = {
+  _key: string;
+  photographer?: string;
+  alt?: string;
+  image: SanityImageObject & {
+    asset?: {
+      _id: string;
+      metadata?: {
+        dimensions?: {
+          width: number;
+          height: number;
+          aspectRatio: number;
+        };
+      };
+    };
+  };
+};
+
+export type Gallery = {
+  images?: GalleryImage[];
+};
+
 export type NewsItem = {
   _id: string;
   title: string;

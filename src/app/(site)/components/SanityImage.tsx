@@ -38,7 +38,11 @@ export default function SanityImage({
   sizes,
   ...rest
 }: SanityImageProps) {
-  if (!image) return null;
+  // Bail out if there's no usable image source. This handles:
+  //   - undefined/null
+  //   - empty objects ({})
+  //   - image fields where the asset hasn't been uploaded yet
+  if (!hasAssetReference(image)) return null;
 
   const dims = readDimensions(image);
 
@@ -94,6 +98,21 @@ export default function SanityImage({
       sizes={sizes}
     />
   );
+}
+
+/**
+ * Returns true if the source is something the image-url builder can resolve.
+ * The builder needs at least an asset reference (or an expanded asset doc
+ * with a url/_id). Without one it throws "Unable to resolve image URL from source".
+ */
+function hasAssetReference(source: unknown): source is SanityImageSource {
+  if (!source || typeof source !== "object") return false;
+  const obj = source as Record<string, unknown>;
+  const asset = obj.asset as Record<string, unknown> | undefined;
+  if (asset && (asset._ref || asset._id || asset.url)) return true;
+  // The source can also be a bare asset doc, or an _id/_ref directly
+  if (typeof obj._ref === "string" || typeof obj._id === "string") return true;
+  return false;
 }
 
 function readDimensions(

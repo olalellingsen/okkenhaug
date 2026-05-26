@@ -14,7 +14,7 @@ import { schema } from "./schemaTypes";
 import { structure } from "./src/sanity/structure";
 
 // Document types that are managed as singletons
-const SINGLETON_TYPES = new Set(["home", "footer"]);
+const SINGLETON_TYPES = new Set(["home", "footer", "gallery"]);
 
 // Actions that should not be available on singleton documents
 const SINGLETON_DISABLED_ACTIONS = new Set([
