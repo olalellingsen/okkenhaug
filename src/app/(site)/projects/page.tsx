@@ -21,12 +21,12 @@ export default async function page() {
               <Link href={`/projects/${project.slug.current}`}>
                 {project.image && (
                   <SanityImage
-                    image={project.image}
+                    image={project.list_image || project.image}
                     alt={project.title}
                     width={1200}
                     height={1200}
                     sizes="(max-width: 1024px) 80vw, 33vw"
-                    className="aspect-3/4 lg:aspect-square object-cover group-hover:opacity-80 group-hover:blur-[3px] transition-all duration-400"
+                    className="aspect-square object-cover group-hover:opacity-80 group-hover:blur-[3px] transition-all duration-400"
                   />
                 )}
 

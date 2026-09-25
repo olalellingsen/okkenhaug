@@ -6,11 +6,6 @@ export const home = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "title",
-      title: "Title",
-      type: "string",
-    }),
-    defineField({
       name: "image",
       title: "Image",
       type: "image",

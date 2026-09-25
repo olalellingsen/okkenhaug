@@ -25,28 +25,52 @@ export const projects = defineType({
     }),
     defineField({
       name: "image",
-      title: "Project Image",
+      title: "Main project image",
+      description: "This image will be used at the top of the project page.",
       type: "image",
       options: {
         hotspot: true,
       },
     }),
     defineField({
+      name: "list_image",
+      title: "Overview image",
+      description: "This image will be used in the projects overview (square)",
+      type: "image",
+    }),
+    defineField({
       name: "body",
       type: "array",
       of: [{ type: "block" }],
     }),
+
     defineField({
-      name: "spotifyLink",
-      title: "Spotify Link",
-      type: "url",
-      validation: (rule) => rule.uri({ allowRelative: true }),
+      name: "socialLinks",
+      title: "Social Links",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "platform",
+              title: "Platform",
+              type: "string",
+            },
+            {
+              name: "url",
+              title: "URL",
+              type: "url",
+            },
+          ],
+        },
+      ],
     }),
   ],
   preview: {
     select: {
       title: "title",
-      media: "image",
+      media: "list_image",
       order: "order",
     },
   },

@@ -47,14 +47,15 @@ export default async function page({
         &larr; Back to projects
       </Button>
       {project.image && (
-        <SanityImage
-          image={project.image}
-          alt={project.title}
-          width={1600}
-          height={640}
-          sizes="(max-width: 768px) 100vw, 1200px"
-          className="w-full aspect-square md:aspect-5/2 object-cover"
-        />
+        <div className="relative aspect-square overflow-hidden md:aspect-5/2">
+          <SanityImage
+            image={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 1200px"
+            className="object-cover"
+          />
+        </div>
       )}
 
       <article className="space-y-12 py-4">
@@ -67,6 +68,17 @@ export default async function page({
             />
           </section>
         )}
+
+        {project.socialLinks && (
+          <ul className="flex gap-2 flex-wrap">
+            {project.socialLinks.map((e) => (
+              <Button key={e.url} href={e.url}>
+                {e.platform}
+              </Button>
+            ))}
+          </ul>
+        )}
+
         {upcomingConcerts.length > 0 && (
           <section>
             <h2>Upcoming concerts</h2>
@@ -116,12 +128,6 @@ export default async function page({
               ))}
             </ul>
           </section>
-        )}
-
-        {project.spotifyLink && (
-          <Button href={project.spotifyLink || "#"} external>
-            Listen here!
-          </Button>
         )}
       </article>
     </main>

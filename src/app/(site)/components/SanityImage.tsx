@@ -60,6 +60,15 @@ export default function SanityImage({
       .auto("format")
       .url();
 
+    // The fetched image keeps its natural aspect ratio, but the box it's
+    // displayed in (via CSS) can be a different shape at each breakpoint.
+    // object-fit: cover then crops it client-side, so we point that crop
+    // at the Studio-set hotspot instead of defaulting to dead center.
+    const hotspot = readHotspot(image);
+    const style = hotspot
+      ? { objectPosition: `${hotspot.x * 100}% ${hotspot.y * 100}%`, ...rest.style }
+      : rest.style;
+
     return (
       <Image
         {...rest}
@@ -67,6 +76,7 @@ export default function SanityImage({
         alt={alt}
         fill
         sizes={sizes ?? "100vw"}
+        style={style}
       />
     );
   }
@@ -113,6 +123,16 @@ function hasAssetReference(source: unknown): source is SanityImageSource {
   // The source can also be a bare asset doc, or an _id/_ref directly
   if (typeof obj._ref === "string" || typeof obj._id === "string") return true;
   return false;
+}
+
+function readHotspot(
+  source: SanityImageSource,
+): { x: number; y: number } | null {
+  const hotspot = (source as SanityImageObject)?.hotspot;
+  if (!hotspot || typeof hotspot.x !== "number" || typeof hotspot.y !== "number") {
+    return null;
+  }
+  return { x: hotspot.x, y: hotspot.y };
 }
 
 function readDimensions(

@@ -18,7 +18,11 @@ export type Project = {
     }>;
   }>;
   image?: SanityImageObject;
-  spotifyLink: string;
+  list_image?: SanityImageObject;
+  socialLinks?: Array<{
+    platform: string;
+    url: string;
+  }>;
 };
 
 export type Concert = {
@@ -36,13 +40,15 @@ export type Concert = {
 export type Album = {
   _id: string;
   title: string;
-  artist: {
+  artist?: {
     title: string;
     slug: {
       current: string;
     };
   };
   otherArtist?: string;
+  discography?: boolean;
+  okkenhaugRec?: boolean;
   releaseDate: string;
   coverArt?: SanityImageSource;
   streamingLink: string;
@@ -61,6 +67,22 @@ export type HomePage = {
   }>;
   image?: SanityImageObject;
   socialLinks: Array<{
+    platform: string;
+    url: string;
+  }>;
+};
+
+export type RecordsPage = {
+  _id: string;
+  image?: SanityImageObject;
+  richText: Array<{
+    _type: string;
+    children: Array<{
+      _type: string;
+      text: string;
+    }>;
+  }>;
+  socialLinks?: Array<{
     platform: string;
     url: string;
   }>;
