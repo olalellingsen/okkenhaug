@@ -41,7 +41,7 @@ function Navbar() {
       </Link>
       <nav>
         <ul
-          className={`hidden md:flex w-max gap-8 m-4 text-lg hover:text-gray-400
+          className={`hidden lg:flex w-max gap-8 m-4 text-lg hover:text-gray-400
           } `}
         >
           {menuItems.map((item) => (
@@ -56,11 +56,11 @@ function Navbar() {
             </Link>
           ))}
         </ul>
-        <div className="md:hidden w-full flex justify-end" onClick={openMenu}>
+        <div className="lg:hidden w-full flex justify-end" onClick={openMenu}>
           <Menu size={50} strokeWidth={1} />
         </div>
         {isOpen && (
-          <div className="fixed md:hidden top-0 left-0 w-screen h-screen bg-background z-50">
+          <div className="fixed lg:hidden top-0 left-0 w-screen h-screen bg-background z-50">
             {/* logo and cross */}
             <div className="h-20 sm:h-24 p-2 flex justify-between w-full">
               <div className="w-full flex justify-end">

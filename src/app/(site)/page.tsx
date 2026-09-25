@@ -60,7 +60,7 @@ export default async function IndexPage() {
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         />
-        <Button href="/music" variant="link" className="mt-2">
+        <Button href="/discography" variant="link" className="mt-2">
           See discography
         </Button>
       </section>
