@@ -1,20 +1,20 @@
 import { albums } from "./albums";
 import { concerts } from "./concerts";
 import { footerSchema } from "./footer";
-import { gallery } from "./gallery";
 import { home } from "./home";
-import { news } from "./news";
+// import { film } from "./film";
+import { records } from "./records";
 import { projects } from "./projects";
 import { venues } from "./venues";
 
 export const schemaTypes = [
   home,
-  news,
+  records,
+  // film,
   projects,
   albums,
   concerts,
   venues,
-  gallery,
   footerSchema,
 ];
 

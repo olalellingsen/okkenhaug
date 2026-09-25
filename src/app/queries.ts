@@ -15,6 +15,10 @@ export const PROJECTS_QUERY = groq`
       metadata
     }
   },
+  list_image {
+    _type,
+    asset,
+  },
   spotifyLink,
   members
 }`;
@@ -32,7 +36,7 @@ export const PROJECT_QUERY = groq`*[_type == "projects" && slug.current == $slug
     hotspot,
     crop
   },
-  spotifyLink
+  socialLinks
 }`;
 
 export const PROJECT_UPCOMING_CONCERTS_QUERY = groq`*[_type == "concerts" && project._ref == $projectId && date >= now()] | order(date asc){
@@ -120,7 +124,7 @@ export const GALLERY_QUERY = groq`*[_type == "gallery"][0]{
   }
 }`;
 
-export const ALBUMS_QUERY = groq`*[_type == "albums"] | order(releaseDate desc) {
+export const ALBUMS_QUERY = groq`*[_type == "albums" && (defined(artist) || discography == true)] | order(releaseDate desc) {
   _id,
   title,
   artist->{
@@ -131,6 +135,29 @@ export const ALBUMS_QUERY = groq`*[_type == "albums"] | order(releaseDate desc) 
   releaseDate,
   coverArt,
   streamingLink
+}`;
+
+export const OKKENHAUG_RECORDS_ALBUMS_QUERY = groq`*[_type == "albums" && okkenhaugRec == true] | order(releaseDate desc) {
+  _id,
+  title,
+  artist->{
+    title,
+    slug
+  },
+  otherArtist,
+  releaseDate,
+  coverArt,
+  streamingLink
+}`;
+
+export const RECORDS_PAGE_QUERY = groq`*[_type == "records"][0]{
+  _id,
+  image,
+  richText,
+  socialLinks {
+    platform,
+    url
+  }
 }`;
 
 export const NEWS_QUERY = groq`*[_type == "news" && publishedAt <= $today] | order(publishedAt desc){

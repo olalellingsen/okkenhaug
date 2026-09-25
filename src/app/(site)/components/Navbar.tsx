@@ -11,9 +11,10 @@ function Navbar() {
   const [menuItems] = useState([
     { label: "Home", path: "/" },
     { label: "Projects", path: "/projects" },
-    { label: "Gallery", path: "/gallery" },
-    { label: "Music", path: "/music" },
+    { label: "Discography", path: "/discography" },
     { label: "Concerts", path: "/concerts" },
+    { label: "Okkenhaug Records", path: "/okkenhaugrecords" },
+    // { label: "Okkenhaug Film", path: "/okkenhaugfilm" },
   ]);
 
   const [isOpen, setIsOpen] = useState(false);

@@ -8,20 +8,37 @@ export const albums = defineType({
     defineField({
       name: "title",
       type: "string",
-      title: "Title",
+      title: "Album Title",
     }),
     defineField({
       name: "artist",
       type: "reference",
       to: [{ type: "projects" }],
-      title: "Artist / Project",
+      title: "Conntect to Project",
     }),
     defineField({
       name: "otherArtist",
       type: "string",
-      title: "Other Artist Name",
+      title: "Other Artist",
       description:
         "Use this field if the artist is not in the Projects collection",
+    }),
+    defineField({
+      name: "discography",
+      type: "boolean",
+      title: "Include in Discography",
+      description:
+        "If checked, this album will be included in Eskild's discography page",
+      initialValue: false,
+      hidden: ({ parent }) => Boolean(parent?.artist),
+    }),
+    defineField({
+      name: "okkenhaugRec",
+      type: "boolean",
+      title: "Include in Okkenhaug Records",
+      description:
+        "If checked, this album will be included in Okkenhaug Records",
+      initialValue: false,
     }),
     defineField({
       name: "releaseDate",
@@ -55,12 +72,26 @@ export const albums = defineType({
       artist: "artist.title",
       otherArtist: "otherArtist",
       coverArt: "coverArt",
+      discography: "discography",
+      okkenhaugRec: "okkenhaugRec",
+      hasArtist: "artist",
     },
     prepare(selection) {
-      const { title, artist, coverArt } = selection;
+      const { title, artist, coverArt, discography, okkenhaugRec, hasArtist } =
+        selection;
+
+      const tags = [
+        (hasArtist || discography) && "Discography",
+        okkenhaugRec && "Okkenhaug Records",
+      ].filter(Boolean);
+
+      const by = artist ? `by ${artist}` : selection.otherArtist;
+
       return {
         title: title,
-        subtitle: artist ? `by ${artist}` : `${selection.otherArtist}`,
+        subtitle: [by, tags.length ? `[${tags.join(", ")}]` : "[not listed]"]
+          .filter(Boolean)
+          .join(" "),
         media: coverArt,
       };
     },
