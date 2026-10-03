@@ -56,7 +56,7 @@ export default async function IndexPage() {
         <iframe
           className="w-full h-[480px]"
           data-testid="embed-iframe"
-          src={home.spotifyLink}
+          src={home.spotifyLink.replace("spotify.com/", "spotify.com/embed/")}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         />
