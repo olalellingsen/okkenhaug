@@ -14,6 +14,16 @@ export const film = defineType({
       },
     }),
     defineField({
+      name: "promoVideo",
+      title: "Promo Video",
+      type: "file",
+      description:
+        "Upload a video file (MP4 recommended). Keep the file size small for faster loading.",
+      options: {
+        accept: "video/*",
+      },
+    }),
+    defineField({
       name: "richText",
       title: "Rich Text",
       type: "array",

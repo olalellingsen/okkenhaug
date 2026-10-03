@@ -62,15 +62,15 @@ export const structure: StructureResolver = (S) => {
             .title("Okkenhaug Records"),
         ),
       // Singleton: Film Page
-      // S.listItem()
-      //   .title("Okkenhaug Film")
-      //   .id("film")
-      //   .child(
-      //     S.document()
-      //       .schemaType("film")
-      //       .documentId("film")
-      //       .title("Okkenhaug Film"),
-      //   ),
+      S.listItem()
+        .title("Okkenhaug Film")
+        .id("film")
+        .child(
+          S.document()
+            .schemaType("film")
+            .documentId("film")
+            .title("Okkenhaug Film"),
+        ),
 
       // Any other document types not covered by the nav order above
       ...otherListItems.filter(

@@ -142,3 +142,23 @@ export type NewsItem = {
     }>;
   }>;
 };
+
+export type FilmPage = {
+  _id: string;
+  image?: SanityImageObject;
+  promoVideo?: {
+    url: string;
+    mimeType: string;
+  };
+  richText: Array<{
+    _type: string;
+    children: Array<{
+      _type: string;
+      text: string;
+    }>;
+  }>;
+  socialLinks?: Array<{
+    platform: string;
+    url: string;
+  }>;
+};

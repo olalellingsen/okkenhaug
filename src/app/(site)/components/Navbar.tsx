@@ -14,7 +14,7 @@ function Navbar() {
     { label: "Discography", path: "/discography" },
     { label: "Concerts", path: "/concerts" },
     { label: "Okkenhaug Records", path: "/okkenhaugrecords" },
-    // { label: "Okkenhaug Film", path: "/okkenhaugfilm" },
+    { label: "Okkenhaug Film", path: "/okkenhaugfilm" },
   ]);
 
   const [isOpen, setIsOpen] = useState(false);

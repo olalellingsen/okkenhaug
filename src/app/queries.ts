@@ -109,21 +109,6 @@ export const HOME_QUERY = groq`*[_type == "home"][0]{
   }
 }`;
 
-export const GALLERY_QUERY = groq`*[_type == "gallery"][0]{
-  images[]{
-    _key,
-    photographer,
-    alt,
-    image{
-      ...,
-      asset->{
-        _id,
-        metadata { dimensions }
-      }
-    }
-  }
-}`;
-
 export const ALBUMS_QUERY = groq`*[_type == "albums" && (defined(artist) || discography == true)] | order(releaseDate desc) {
   _id,
   title,
@@ -168,4 +153,18 @@ export const NEWS_QUERY = groq`*[_type == "news" && publishedAt <= $today] | ord
     image,
     excerpt,
     content
+}`;
+
+export const OKKENHAUG_FILM_QUERY = groq`*[_type == "film"][0]{
+  _id,
+  image,
+  richText,
+  "promoVideo": promoVideo.asset->{
+    url,
+    mimeType
+  },
+  socialLinks {
+    platform,
+    url
+  }
 }`;
